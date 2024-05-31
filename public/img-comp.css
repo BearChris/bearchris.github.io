@@ -1,14 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+:root{
+  --iotext: #000;
+  --iobg: #FFF;
+}
+
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Varela Round", sans-serif;
+  color: var(--iotext);
+  cursor: context-menu;
 }
 
-img {
-  display: block;
-  max-width: 100%;
+body{
+  background: var(--iobg);
+}
+
+.navbar-container h1{
+  display: inline-block;
+  padding: .5em 1em;
+}
+
+.navbar-group{
+  display: inline-block;
+  float: right;
+  padding: .5em 1em;
+}
+
+.navbar-group *{
+  cursor: pointer;
+}
+
+.navbar-item{
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 0 .5rem;
+  transition: border .5s, transform .5s ease-out;
+}
+
+.navbar-item:not(:last-child):hover{
+  transform: scale(1.1);
+  border-bottom: .2rem solid var(--iotext);
+}
+
+.darkmode-btn{
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.darkmode-btn img{
+  filter: invert(0);
 }
 
 main {
@@ -44,11 +88,13 @@ main {
     position: absolute;
     font-size: 1.2rem;
     font-weight: 700;
-    font-family: sans-serif;
-    text-shadow: 0 0 .5em white;
-    width: calc(var(--sWidth)/2);
-    backdrop-filter: blur(1.2);
+    /* width: calc(var(--sWidth)/2); */
+    backdrop-filter: blur(5px);
+    color: white;
+    text-shadow: 0 0 3px black;
     text-align: center;
+    background: rgba(255,255,255,0.1);
+    padding: 5rem 10rem;
 }
 
 .image-text-l{
