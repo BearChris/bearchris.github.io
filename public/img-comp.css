@@ -11,22 +11,45 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Varela Round", sans-serif;
-  color: var(--iotext);
   cursor: context-menu;
+}
+
+.dark-text{
+  color: var(--iotext);
+}
+
+.dark-bg{
+  background: var(--iotext);
 }
 
 body{
   background: var(--iobg);
 }
 
-.navbar-container h1{
-  display: inline-block;
+.navbar-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-header{
+  display: flex;
   padding: .5em 1em;
 }
 
+.header-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eyes-group{
+  width: 7.5rem;
+  height: 3.9rem;
+  overflow: hidden;
+}
+
 .navbar-group{
-  display: inline-block;
-  float: right;
   padding: .5em 1em;
 }
 
@@ -49,6 +72,7 @@ body{
 .darkmode-btn{
   width: 1.2rem;
   height: 1.2rem;
+  -webkit-transition: -webkit-filter .5s ease-in;
 }
 
 .darkmode-btn img{

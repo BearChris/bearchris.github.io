@@ -8,15 +8,29 @@
     <link rel="stylesheet" href="public/img-comp.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="public/img-comp.js"></script>
+    <script src="public/darkmode.js"></script>
+    <script src="public/eyes.js"></script>
 </head>
 <body>
     
     <div class="navbar-container">
-      <h1>BearChris</h1>
+      <div class="navbar-header">
+        <h1 class="dark-text header-title">BearChris</h1>
+        <svg class="eyes-group" id="svg">
+          <g class="eye">
+            <circle class="eyeball" cx="60" cy="30" r="18" fill="#FFF" stroke="#000" />
+            <circle class="pupil" cx="60" cy="30" r="5" fill="#000" />
+          </g>
+          <g class="eye">
+          <circle class="eyeball" cx="30" cy="30" r="18" fill="#FFF" stroke="#000" />
+          <circle class="pupil" cx="30" cy="30" r="5" fill="#000" />
+        </g>
+      </svg>
+    </div>
       <ul class="navbar-group">
-        <li class="navbar-item">Creature</li>
-        <li class="navbar-item">Contact</li>
-        <li class="navbar-item darkmode-btn">
+        <li class="navbar-item dark-text">Creature</li>
+        <li class="navbar-item dark-text">Contact</li>
+        <li class="navbar-item dark-text darkmode-btn">
           <img class="darkmode-ico" src="public/media/circle-half-stroke-solid.svg" alt="light-switch"/>
         </li>
       </ul>
@@ -24,10 +38,10 @@
       
     <main>
         <div class="container">
-          <div class="image-text-container">
+          <!-- <div class="image-text-container">
             <div class="image-text-l image-text">Desert?</div>
             <div class="image-text-r image-text">or Dessert.</div>
-          </div>
+          </div> -->
           
           <div class="image-container">
             <img
