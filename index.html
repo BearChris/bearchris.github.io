@@ -6,9 +6,10 @@
     <title>BearChris</title>
     <link rel="icon" type="image/svg+png" href="public/media/cat-logo.png">
     <link rel="stylesheet" href="public/img-comp.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="public/img-comp.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <script src="public/img-comp.js"></script> -->
     <script src="public/darkmode.js"></script>
+    <script src="public/navbar.js"></script>
     <script src="public/eyes.js"></script>
 </head>
 <body>
@@ -18,114 +19,30 @@
         <h1 class="dark-text header-title">BearChris</h1>
         <svg class="eyes-group" id="svg">
           <g class="eye">
-            <circle class="eyeball" cx="60" cy="30" r="18" fill="#FFF" stroke="#000" />
+            <circle class="eyeball" cx="60" cy="30" r="18" fill="#FFF" stroke="#000" stroke-width="4"/>
             <circle class="pupil" cx="60" cy="30" r="5" fill="#000" />
           </g>
           <g class="eye">
-          <circle class="eyeball" cx="30" cy="30" r="18" fill="#FFF" stroke="#000" />
-          <circle class="pupil" cx="30" cy="30" r="5" fill="#000" />
-        </g>
-      </svg>
-    </div>
+            <circle class="eyeball" cx="30" cy="30" r="18" fill="#FFF" stroke="#000" stroke-width="4"/>
+            <circle class="pupil" cx="30" cy="30" r="5" fill="#000" />
+          </g>
+        </svg>
+      </div>
       <ul class="navbar-group">
-        <li class="navbar-item dark-text">Creature</li>
-        <li class="navbar-item dark-text">Contact</li>
-        <li class="navbar-item dark-text darkmode-btn">
+        <li class="navbar-item dark-text desktop">Creature</li>
+        <li class="navbar-item dark-text desktop">Contact</li>
+        <li class="navbar-item dark-text darkmode-btn ico-btn">
           <img class="darkmode-ico" src="public/media/circle-half-stroke-solid.svg" alt="light-switch"/>
         </li>
+        <li class="navbar-item dark-text ico-btn mobile nav-popup">
+          <img class="darkmode-ico" src="public/media/menu-bars.svg" alt="bars"/>
+        </li>
+      </ul>
+      <ul class="mobile-nav mobile">
+        <li class="navbar-item dark-text">Creature</li>
+        <li class="navbar-item dark-text">Contact</li>
       </ul>
     </div>
       
-    <main>
-        <div class="container">
-          <!-- <div class="image-text-container">
-            <div class="image-text-l image-text">Desert?</div>
-            <div class="image-text-r image-text">or Dessert.</div>
-          </div> -->
-          
-          <div class="image-container">
-            <img
-              class="image-before slider-image"
-             src="public/media/img-com-cake.jpg"
-              alt="color photo"
-            />
-            <img
-              class="image-after slider-image"
-              src="public/media/img-com-desert.jpg"
-              alt="black and white"
-            />
-          </div>
-          <!-- step="10" -->
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="50"
-            aria-label="Percentage of before photo shown"
-            class="slider"
-          />
-          <div class="slider-line" aria-hidden="true"></div>
-          <div class="slider-button" aria-hidden="true">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              viewBox="0 0 256 256"
-            >
-              <rect width="256" height="256" fill="none"></rect>
-              <line
-                x1="128"
-                y1="40"
-                x2="128"
-                y2="216"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></line>
-              <line
-                x1="96"
-                y1="128"
-                x2="16"
-                y2="128"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></line>
-              <polyline
-                points="48 160 16 128 48 96"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></polyline>
-              <line
-                x1="160"
-                y1="128"
-                x2="240"
-                y2="128"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></line>
-              <polyline
-                points="208 96 240 128 208 160"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="16"
-              ></polyline>
-            </svg>
-          </div>
-        </div>
-      </main>
 </body>
 </html>
