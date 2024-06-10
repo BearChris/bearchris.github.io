@@ -1,0 +1,24 @@
+.back-to-top {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-block;  
+    padding: 1em;
+    margin: 1em;
+    width: 5em;
+    height: 5em;
+    background: var(--primary-bg);
+    filter: invert(1);
+    border-radius: 50%;
+    z-index: 99;
+    box-sizing: border-box;
+}
+
+.back-to-top *{
+    cursor: pointer;
+}
+    
+.back-to-top img{
+    width: 100%;
+    height: 100%;
+  }

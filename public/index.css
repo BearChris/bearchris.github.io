@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+:root{
+  --primary: #000;
+  --primary-bg: #FFF;
+  --primary-shadow: rgba(0,0,0,0.3);
+}
+
+/* * {
+  outline: 1px solid #f00 !important;
+} */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Varela Round", sans-serif;
+  cursor: context-menu;
+}
+
+img{
+}
+
+li{
+  list-style-type: none;
+}
+
+.desktop{
+  display: block;
+}
+
+.mobile{
+  display: none;
+}
+
+.dark-text{
+  color: var(--primary);
+}
+
+.dark-bg{
+  background: var(--primary);
+}
+
+body{
+  background: var(--primary-bg);
+}
+
+.navbar-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 .5em .7em var(--primary-shadow);
+}
+
+.navbar-header{
+  display: flex;
+  padding: .5em 1em;
+}
+
+.navbar-title{
+  line-height: 1.9;
+}
+
+.eyes-group{
+  width: 6rem;
+  height: 3.9rem;
+  overflow: hidden;
+}
+
+.navbar-group{
+  display: flex;
+  padding: .5em 1em;
+}
+
+.navbar-group *{
+  cursor: pointer;
+}
+
+.navbar-item{
+  position: relative;
+  font-size: 1.5rem;
+  margin: 0 .5rem;
+  transition: border .5s, transform .5s ease-out;
+}
+
+.navbar-item:is(.desktop)::before{
+  display: block;
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  border-bottom: .1em solid var(--primary);
+  transition: all .3s ease-out;
+}
+
+.navbar-item:is(.desktop):hover:before{
+  width: 100%;
+  /* animation: bottom-border 1s 1 forwards; */
+}
+
+/* .navbar-item:not(.ico-btn):hover{
+  transform: scale(1.1);
+  border-bottom: .2rem solid var(--primary);
+} */
+
+.ico-btn{
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.darkmode-btn{
+  -webkit-transition: -webkit-filter .5s ease-in;
+}
+
+.darkmode-btn img{
+  filter: invert(0);
+}
+
+.board-container{
+  display: flex;
+  text-align: center;
+  position: relative;
+  justify-content: center;
+  overflow: hidden;
+  padding: 3rem 0;
+}
+
+.img-goodman{
+  position: absolute;
+  right: -5vw;
+  bottom: -5vh;
+  z-index: 30;
+  width: 30vh;
+  height: 30vh;
+  transform: rotate(-15deg);
+  filter: grayscale(30%);
+}
+
+.content{
+  color: var(--primary);
+  margin-top: 3rem;
+}
+
+.content *{
+  position: relative;
+}
+
+.first-content{
+  padding: 3rem 0;
+}
+
+.second-content{
+  width: 90vw;
+  padding: 3rem 0;
+  z-index: 3;
+  color: var(--primary-bg);
+  background: var(--primary);
+  border-radius: 1rem;
+  box-shadow: 0 .5em .7em var(--primary-shadow);
+}
+
+.second-content h1{
+  margin-bottom: 3rem;
+}
+
+.work-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.work-card{
+  text-align: center;
+  width: 50vh;
+  height: 50vh;
+}
+
+.work-card img{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.footer-container{
+  padding: 3rem 0;
+  text-align: center;
+  }
+  
+.footer{
+  background: var(--primary-bg);
+}
+
+
+/* @keyframes bottom-border {
+  0%{
+    width: 0;
+  }
+
+  100%{
+    width: 100%;
+  }
+} */
+
+
+@media screen and (max-width: 600px) {
+  .navbar-group{
+    padding: .5em 0;
+    padding-right: .5em;
+  }
+
+  .mobile-nav{
+  }
+
+  .mobile-nav li{
+    display:block;
+    padding: .3rem .5rem;
+  }
+
+  .desktop{
+    display: none;
+  }
+
+  .mobile{
+    display: block;
+  }
+
+  .toggle-hide{
+    display: none;
+  }
+
+  .ico-btn{
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .img-goodman{
+    width: 30vw;
+    height: 30vw;
+    right: -10vw;
+  }
+
+  .second-content{
+    width: 100vw;
+  }
+}

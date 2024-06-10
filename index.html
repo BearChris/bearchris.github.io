@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BearChris</title>
     <link rel="icon" type="image/svg+png" href="public/media/cat-logo.png">
-    <link rel="stylesheet" href="public/img-comp.css">
+    <link rel="stylesheet" href="public/index.css">
+    <link rel="stylesheet" href="public/totopbtn.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- <script src="public/img-comp.js"></script> -->
     <script src="public/darkmode.js"></script>
     <script src="public/navbar.js"></script>
     <script src="public/eyes.js"></script>
+    <script src="public/totopbtn.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </head>
 <body>
-    
+    <div class="back-to-top"><img src="public/media/arrow-up.png" alt=""></div>
     <div class="navbar-container">
       <div class="navbar-header">
-        <h1 class="dark-text header-title">BearChris</h1>
+        <h1 class="dark-text navbar-title">BearChris</h1>
         <svg class="eyes-group" id="svg">
           <g class="eye">
             <circle class="eyeball" cx="60" cy="30" r="18" fill="#FFF" stroke="#000" stroke-width="4"/>
@@ -29,8 +33,8 @@
         </svg>
       </div>
       <ul class="navbar-group">
-        <li class="navbar-item dark-text desktop">Creature</li>
-        <li class="navbar-item dark-text desktop">Contact</li>
+        <li class="navbar-item dark-text desktop to-creature">Creations</li>
+        <li class="navbar-item dark-text desktop to-contact">Contact</li>
         <li class="navbar-item dark-text darkmode-btn ico-btn">
           <img class="darkmode-ico" src="public/media/circle-half-stroke-solid.svg" alt="light-switch"/>
         </li>
@@ -38,10 +42,43 @@
           <img class="darkmode-ico" src="public/media/menu-bars.svg" alt="bars"/>
         </li>
       </ul>
-      <ul class="mobile-nav mobile">
-        <li class="navbar-item dark-text">Creature</li>
-        <li class="navbar-item dark-text">Contact</li>
+      <ul class="mobile-nav mobile toggle-hide">
+        <li class="navbar-item dark-text to-creature">Creations</li>
+        <li class="navbar-item dark-text to-contact">Contact</li>
       </ul>
+    </div>
+
+    <div class="board-container">
+      <img class="img-goodman" src="./public/media/goodman.png" alt="goodman">
+      <div class="content">
+        <div class="first-content">
+          <h1 class="content-title">
+            Hello and welcome to my portfolio
+          </h1>
+        </div>
+        <div class="second-content">
+          <h1>
+            Do you like my creations?
+          </h1>
+          <ul class="work-container">
+            <li class="work-card"><img src="public/media/works/GY.png"></li>
+            <li class="work-card"><img src="public/media/works/image25.png"></li>
+            <li class="work-card"><img src="public/media/works/image23.png"></li>
+            <li class="work-card"><img src="public/media/works/image24.png"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-container">
+      <div class="footer">
+        <h1 class="footer-title dark-text">Contact</h1>
+        <div class="footer-content">
+          <ul>
+            <li>bear007509@gmail.com</li>
+          </ul>
+        </div>
+      </div>
     </div>
       
 </body>
