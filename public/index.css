@@ -47,10 +47,14 @@ body{
 }
 
 .navbar-container{
+  position: initial;
+  width: 100dvw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  z-index: 99;
+  background: var(--primary-bg);
   box-shadow: 0 .5em .7em var(--primary-shadow);
 }
 
@@ -170,13 +174,26 @@ body{
 .work-container{
   display: flex;
   justify-content: center;
+}
+
+.work-container ul{
+  display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  width: 75%;
 }
 
 .work-card{
   text-align: center;
-  width: 50vh;
-  height: 50vh;
+  width: 32dvw;
+  height: 32dvw;
+  margin: 10px;
+  transition: transform .3s ease-in;
+}
+
+.work-card:hover{
+  transform: scale(1.2);
+  z-index: 3;
 }
 
 .work-card img{
@@ -188,10 +205,16 @@ body{
 .footer-container{
   padding: 3rem 0;
   text-align: center;
-  }
-  
-.footer{
-  background: var(--primary-bg);
+  color: var(--primary-bg);
+  background: var(--primary);
+}
+
+.footer-title{
+  color: var(--primary-bg);
+}
+
+.footer-content{
+  margin: 3rem 0;
 }
 
 

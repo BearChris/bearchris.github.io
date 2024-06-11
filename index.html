@@ -13,12 +13,12 @@
     <script src="public/darkmode.js"></script>
     <script src="public/navbar.js"></script>
     <script src="public/eyes.js"></script>
-    <script src="public/totopbtn.js"></script>
+    <script src="public/clicktoscroll.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </head>
 <body>
     <div class="back-to-top"><img src="public/media/arrow-up.png" alt=""></div>
-    <div class="navbar-container">
+    <div class="navbar-container" id="navbar">
       <div class="navbar-header">
         <h1 class="dark-text navbar-title">BearChris</h1>
         <svg class="eyes-group" id="svg">
@@ -56,21 +56,24 @@
             Hello and welcome to my portfolio
           </h1>
         </div>
-        <div class="second-content">
+        <div class="second-content" id="second-content">
           <h1>
             Do you like my creations?
           </h1>
-          <ul class="work-container">
-            <li class="work-card"><img src="public/media/works/GY.png"></li>
-            <li class="work-card"><img src="public/media/works/image25.png"></li>
-            <li class="work-card"><img src="public/media/works/image23.png"></li>
-            <li class="work-card"><img src="public/media/works/image24.png"></li>
-          </ul>
+          <div class="work-container">
+            <ul>
+              <li class="work-card"><img src="public/media/works/GY.png"></li>
+              <li class="work-card"><img src="public/media/works/image25.png"></li>
+              <li class="work-card"><img src="public/media/works/image23.png"></li>
+              <li class="work-card"><img src="public/media/works/image24.png"></li>
+              <li class="work-card"><img src="public/media/works/image2.png"></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="footer-container">
+    <div class="footer-container" id="footer">
       <div class="footer">
         <h1 class="footer-title dark-text">Contact</h1>
         <div class="footer-content">

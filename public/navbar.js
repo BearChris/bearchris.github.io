@@ -7,6 +7,9 @@ $( document ).ready(function() {
         $(".mobile-nav").slideToggle("slow",function(){});
     });
 
-    $('')
+    $( window ).on( "scroll", function() {
+        
+        $(".navbar-container").css("position","fixed");
+    });
 
 });

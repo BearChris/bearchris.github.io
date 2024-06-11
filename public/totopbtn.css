@@ -7,11 +7,12 @@
     margin: 1em;
     width: 5em;
     height: 5em;
-    background: var(--primary-bg);
-    filter: invert(1);
+    background: black;
     border-radius: 50%;
     z-index: 99;
     box-sizing: border-box;
+    border: .3em solid white;
+    box-shadow: 0 .5em .7em var(--primary-shadow);
 }
 
 .back-to-top *{
@@ -21,4 +22,5 @@
 .back-to-top img{
     width: 100%;
     height: 100%;
+    filter: invert(1);
   }
