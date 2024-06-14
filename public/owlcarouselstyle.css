@@ -1,0 +1,12 @@
+.owl-nav > button > span{
+    font-size: 3em;
+}
+
+.owl-item img{
+    object-fit: contain;
+}
+
+.owl-carousel .owl-stage {
+    display: flex;
+    align-items: center;
+  }

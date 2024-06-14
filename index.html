@@ -1,88 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BearChris</title>
-    <link rel="icon" type="image/svg+png" href="public/media/cat-logo.png">
-    <link rel="stylesheet" href="public/index.css">
-    <link rel="stylesheet" href="public/totopbtn.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <!-- <script src="public/img-comp.js"></script> -->
-    <script src="public/darkmode.js"></script>
-    <script src="public/navbar.js"></script>
-    <script src="public/eyes.js"></script>
-    <script src="public/clicktoscroll.js"></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BearChris</title>
+  <link rel="icon" type="image/svg+png" href="public/media/cat-logo.png">
+  <link rel="stylesheet" href="public/index.css">
+  <link rel="stylesheet" href="public/totopbtn.css">
+  <link rel="stylesheet" href="public/owlcarouselstyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
+    integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- <script src="public/img-comp.js"></script> -->
+  <script src="public/darkmode.js"></script>
+  <script src="public/navbar.js"></script>
+  <script src="public/eyes.js"></script>
+  <script src="public/clicktoscroll.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </head>
+
 <body>
-    <div class="back-to-top"><img src="public/media/arrow-up.png" alt=""></div>
-    <div class="navbar-container" id="navbar">
-      <div class="navbar-header">
-        <h1 class="dark-text navbar-title">BearChris</h1>
-        <svg class="eyes-group" id="svg">
-          <g class="eye">
-            <circle class="eyeball" cx="60" cy="30" r="18" fill="#FFF" stroke="#000" stroke-width="4"/>
-            <circle class="pupil" cx="60" cy="30" r="5" fill="#000" />
-          </g>
-          <g class="eye">
-            <circle class="eyeball" cx="30" cy="30" r="18" fill="#FFF" stroke="#000" stroke-width="4"/>
-            <circle class="pupil" cx="30" cy="30" r="5" fill="#000" />
-          </g>
-        </svg>
-      </div>
-      <ul class="navbar-group">
-        <li class="navbar-item dark-text desktop to-creature">Creations</li>
-        <li class="navbar-item dark-text desktop to-contact">Contact</li>
-        <li class="navbar-item dark-text darkmode-btn ico-btn">
-          <img class="darkmode-ico" src="public/media/circle-half-stroke-solid.svg" alt="light-switch"/>
-        </li>
-        <li class="navbar-item dark-text ico-btn mobile nav-popup">
-          <img class="darkmode-ico" src="public/media/menu-bars.svg" alt="bars"/>
-        </li>
-      </ul>
-      <ul class="mobile-nav mobile toggle-hide">
-        <li class="navbar-item dark-text to-creature">Creations</li>
-        <li class="navbar-item dark-text to-contact">Contact</li>
-      </ul>
+  <div class="back-to-top"><img src="public/media/arrow-up.png" alt=""></div>
+  <div class="navbar-container" id="navbar">
+    <div class="navbar-header">
+      <h1 class="dark-text navbar-title">BearChris</h1>
+      <svg class="eyes-group" id="svg">
+        <g class="eye">
+          <circle class="eyeball" cx="60" cy="30" r="18" fill="#FFF" stroke="#000" stroke-width="4" />
+          <circle class="pupil" cx="60" cy="30" r="5" fill="#000" />
+        </g>
+        <g class="eye">
+          <circle class="eyeball" cx="30" cy="30" r="18" fill="#FFF" stroke="#000" stroke-width="4" />
+          <circle class="pupil" cx="30" cy="30" r="5" fill="#000" />
+        </g>
+      </svg>
     </div>
+    <ul class="navbar-group">
+      <li class="navbar-item dark-text desktop to-creature">Creations</li>
+      <li class="navbar-item dark-text desktop to-contact">Contact</li>
+      <li class="navbar-item dark-text darkmode-btn ico-btn">
+        <img class="darkmode-ico" src="public/media/circle-half-stroke-solid.svg" alt="light-switch" />
+      </li>
+      <li class="navbar-item dark-text ico-btn mobile nav-popup">
+        <img class="darkmode-ico" src="public/media/menu-bars.svg" alt="bars" />
+      </li>
+    </ul>
+    <ul class="mobile-nav mobile toggle-hide">
+      <li class="navbar-item dark-text to-creature">Creations</li>
+      <li class="navbar-item dark-text to-contact">Contact</li>
+    </ul>
+  </div>
 
-    <div class="board-container">
-      <img class="img-goodman" src="./public/media/goodman.png" alt="goodman">
-      <div class="content">
-        <div class="first-content">
-          <h1 class="content-title">
-            Hello and welcome to my portfolio
-          </h1>
-        </div>
-        <div class="second-content" id="second-content">
-          <h1>
-            Do you like my creations?
-          </h1>
-          <div class="work-container">
-            <ul>
-              <li class="work-card"><img src="public/media/works/GY.png"></li>
-              <li class="work-card"><img src="public/media/works/image25.png"></li>
-              <li class="work-card"><img src="public/media/works/image23.png"></li>
-              <li class="work-card"><img src="public/media/works/image24.png"></li>
-              <li class="work-card"><img src="public/media/works/image2.png"></li>
-            </ul>
-          </div>
-        </div>
+  <div class="board-container">
+    <img class="img-goodman" src="./public/media/goodman.png" alt="goodman">
+    <div class="content">
+      <div class="first-content">
+        <h1 class="content-title">
+          Hello and welcome to my portfolio
+        </h1>
       </div>
-    </div>
-
-    <div class="footer-container" id="footer">
-      <div class="footer">
-        <h1 class="footer-title dark-text">Contact</h1>
-        <div class="footer-content">
+      <div class="second-content" id="second-content">
+        <h1>
+          Do you like my creations?
+        </h1>
+        <div class="work-container">
           <ul>
-            <li>bear007509@gmail.com</li>
+            <li class="work-card"><img src="public/media/works/GY.png"></li>
+            <li class="work-card"><img src="public/media/works/image25.png"></li>
+            <li class="work-card"><img src="public/media/works/image23.png"></li>
+            <li class="work-card"><img src="public/media/works/image24.png"></li>
+            <li class="work-card"><img src="public/media/works/image2.png"></li>
           </ul>
         </div>
+        <!-- <div class="owl-carousel owl-theme">
+          <div class="item"><img
+              src="https://images.pexels.com/photos/25394823/pexels-photo-25394823.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+              alt=""></div>
+          <div class="item"><img
+              src="https://images.pexels.com/photos/25244962/pexels-photo-25244962.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+              alt=""></div>
+          <div class="item"><img
+              src="https://images.pexels.com/photos/11762520/pexels-photo-11762520.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+              alt=""></div>
+          <div class="item"><img
+              src="https://images.pexels.com/photos/21620548/pexels-photo-21620548.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+              alt=""></div>
+          <div class="item"><img
+              src="https://images.pexels.com/photos/24709677/pexels-photo-24709677.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+              alt=""></div>
+        </div> -->
+        <div class="owl-carousel owl-theme">
+          <div class="item"><img src="public/media/works/GY.png"></div>
+          <div class="item"><img src="public/media/works/image25.png"></div>
+          <div class="item"><img src="public/media/works/image23.png"></div>
+          <div class="item"><img src="public/media/works/image24.png"></div>
+          <div class="item"><img src="public/media/works/image2.png"></div>
+        </div>
       </div>
     </div>
-      
+  </div>
+
+  <div class="footer-container" id="footer">
+    <div class="footer">
+      <h1 class="footer-title dark-text">Contact</h1>
+      <div class="footer-content">
+        <ul>
+          <li>bear007509@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    $('.owl-carousel').owlCarousel({
+      autoplay: true, //Set AutoPlay to 3 seconds
+      autoplayTimeout: 3000,
+      loop: true,
+      margin: 10,
+      responsiveClass: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: true
+        },
+        600: {
+          items: 3,
+          nav: false
+        },
+        1000: {
+          items: 5,
+          nav: true,
+          loop: false
+        }
+      }
+    })
+  </script>
+
 </body>
+
 </html>
