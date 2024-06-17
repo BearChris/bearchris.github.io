@@ -2,8 +2,23 @@
     font-size: 3em;
 }
 
+.owl-carousel{
+    padding: 1em;
+}
+
+.owl-carousel .item{
+    position: relative;
+}
+
 .owl-item img{
     object-fit: contain;
+    transition: all .5s;
+    z-index: 1;
+}
+
+.owl-item img:hover{
+    scale: 1.2;
+    z-index: 3;
 }
 
 .owl-carousel .owl-stage {
