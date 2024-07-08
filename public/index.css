@@ -47,6 +47,7 @@ li{
   width: 100%;
   height: .1rem;
   background: var(--primary-grad);
+  margin: 5rem 0;
 }
 
 body{
@@ -161,7 +162,16 @@ body{
 }
 
 .first-content{
+  width: 90vw;
   padding: 3rem 0;
+}
+
+.container3d{
+  height: 30%;
+}
+
+#canvas{
+  background-color: #000;
 }
 
 .second-content{
@@ -272,6 +282,11 @@ body{
     width: 30vw;
     height: 30vw;
     right: -10vw;
+  }
+
+  .first-content{
+    width: 100vw;
+    height: 50vh;
   }
 
   .second-content{

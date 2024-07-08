@@ -7,6 +7,7 @@
   <title>BearChris</title>
   <link rel="icon" type="image/svg+png" href="public/media/cat-logo.png">
   <link rel="stylesheet" href="public/index.css">
+  <link rel="stylesheet" href="public/3dcanvas.css">
   <link rel="stylesheet" href="public/totopbtn.css">
   <link rel="stylesheet" href="public/owlcarouselstyle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,6 +22,14 @@
   <script src="public/eyes.js"></script>
   <script src="public/clicktoscroll.js"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@v0.149.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@v0.149.0/examples/jsm/"
+      }
+    }
+</script>
 </head>
 
 <body>
@@ -62,6 +71,10 @@
         <h1 class="content-title">
           Hello and welcome to my portfolio
         </h1>
+        <script type="module" src="public/3d.js"></script>
+        <div class="container3d">
+          <div id="canvas"></div>
+        </div>
       </div>
       <div class="second-content" id="second-content">
         <h1>
@@ -100,11 +113,9 @@
             <div class="item"><img src="public/media/works/image2.png"></div>
           </div>
         </div>
-        <br>
-        <br>
+
         <div class="breakline"></div>
-        <br>
-        <br>
+
         <h1>Web Development Sample</h1>
         <div class="owl-carousel owl-theme">
           <div class="item"><img src="public/media/works/image14.png"></div>
