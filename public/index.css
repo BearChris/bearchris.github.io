@@ -234,6 +234,13 @@ body{
   margin: 3rem 0;
 }
 
+.footer-content > ul > li:last-child{
+  margin-top: 3em;
+  font-size: .5em;
+  color: #AAA;
+  opacity: .5;
+}
+
 
 /* @keyframes bottom-border {
   0%{
