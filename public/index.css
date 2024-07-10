@@ -161,13 +161,16 @@ body{
   position: relative;
 }
 
+.content-title{
+  margin-bottom: 1em;
+}
+
 .first-content{
   width: 90vw;
   padding: 3rem 0;
 }
 
 .container3d{
-  height: 30%;
 }
 
 #canvas{
@@ -291,9 +294,11 @@ body{
     right: -10vw;
   }
 
+
+
   .first-content{
     width: 100vw;
-    height: 50vh;
+    height: 45vh;
   }
 
   .second-content{
