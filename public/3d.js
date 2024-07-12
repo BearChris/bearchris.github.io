@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 
 const cameraDistance = 16;
 const cameraHeight = 12;
@@ -34,6 +35,7 @@ const textureCube = skyboxLoader.load([
   'front.png', 'back.png'
 ]);
 
+//scene.background = new THREE.Color(0xff0000);;
 scene.background = textureCube;
 
 const container = document.getElementById('canvas');
@@ -50,10 +52,10 @@ container.appendChild(renderer.domElement);
 //const renderer = new THREE.WebGLRenderer();
 //renderer.setSize( window.innerWidth, window.innerHeight );
 //document.body.appendChild( renderer.domElement );
-controls.maxDistance = cameraDistance;
+/* controls.maxDistance = cameraDistance;
 controls.minDistance = cameraDistance;
-controls.minPolarAngle = Math.PI/2.5;
-controls.maxPolarAngle = Math.PI/2.5;
+controls.minPolarAngle = Math.PI / 2.5;
+controls.maxPolarAngle = Math.PI / 2.5; */
 controls.update();
 /* controls.enableDamping = true;// an animation loop is required when either damping or auto-rotation are enabled
 controls.dampingFactor = 0.3;
@@ -65,7 +67,7 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
 
 //const light = new THREE.AmbientLight(0xffffff); // soft white light
-const light = new THREE.PointLight(0xffcc00, 3, 210); // soft white light
+const light = new THREE.PointLight(0xffcc00, 3, 30); // soft white light
 light.position.set(0, 0, 0);
 scene.add(light);
 
@@ -77,9 +79,49 @@ loader.load('public/media/works/3d/campfire.glb', function (gltf) {
   model.position.y = -5;
   //model.rotation.x = 25 * Math.PI / 180;
   //model.position.x = 0;
-  //model.rotation.x = 0;
 
   scene.add(gltf.scene);
+
+
+}, undefined, function (error) {
+
+  console.error(error);
+
+});
+
+function genRandNum(min, max, excludeMin, excludeMax) {
+  let randomNumber;
+  if (excludeMin || excludeMax) {
+    do {
+      randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    } while (randomNumber >= excludeMin && randomNumber <= excludeMax);
+    
+    return randomNumber;
+  }else{
+    return randomNumber = Math.random() * (max - min + 1) + min;
+  }
+}
+
+const treesLoader = new GLTFLoader();
+
+treesLoader.load('public/media/works/3d/campfire-tree.glb', function (gltf) {
+  let model = gltf.scene;
+  let max = 50, eMax = 5;
+  let min = -50, eMin = -5;
+  let maxY = -3.9;
+  let sizeMax = 1.1, sizeMin = 0.9;
+  for (let i = 0; i < 30; i++) {
+    const treeClone = SkeletonUtils.clone(model);
+    let x = genRandNum(min, max, eMin, eMax);
+    let z = genRandNum(min, max, eMin, eMax);
+    treeClone.position.set(x, maxY, z);
+    treeClone.rotation.y = Math.PI / Math.random();
+    let sv = genRandNum(sizeMin, sizeMax);
+    let sh = genRandNum(sizeMin, sizeMax);
+    treeClone.scale.set(sv, sh, sv)
+    scene.add(treeClone);
+  }
+
 
 }, undefined, function (error) {
 
