@@ -56,6 +56,7 @@ container.appendChild(renderer.domElement);
 controls.minDistance = cameraDistance;
 controls.minPolarAngle = Math.PI / 2.5;
 controls.maxPolarAngle = Math.PI / 2.5; */
+controls.maxPolarAngle = Math.PI / 2;
 controls.update();
 /* controls.enableDamping = true;// an animation loop is required when either damping or auto-rotation are enabled
 controls.dampingFactor = 0.3;
@@ -73,7 +74,7 @@ scene.add(light);
 
 const loader = new GLTFLoader();
 
-loader.load('public/media/works/3d/campfire.glb', function (gltf) {
+loader.load('public/media/works/3d/campfire-mud.glb', function (gltf) {
   let model = gltf.scene;
   model.rotation.y = 45 * Math.PI / 180;
   model.position.y = -5;
@@ -106,11 +107,11 @@ const treesLoader = new GLTFLoader();
 
 treesLoader.load('public/media/works/3d/campfire-tree.glb', function (gltf) {
   let model = gltf.scene;
-  let max = 50, eMax = 5;
-  let min = -50, eMin = -5;
+  let max = 210, eMax = 15;
+  let min = -210, eMin = -15;
   let maxY = -3.9;
   let sizeMax = 1.1, sizeMin = 0.9;
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 50; i++) {
     const treeClone = SkeletonUtils.clone(model);
     let x = genRandNum(min, max, eMin, eMax);
     let z = genRandNum(min, max, eMin, eMax);
