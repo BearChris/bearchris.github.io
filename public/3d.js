@@ -64,13 +64,12 @@ controls.dampingFactor = 0.3;
 controls.minDistance = 5;
 controls.maxDistance = 30; */
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-
 //const light = new THREE.AmbientLight(0xffffff); // soft white light
 const light = new THREE.PointLight(0xffcc00, 3, 30); // soft white light
+const sparkle = new THREE.PointLight(0xff5000, 3, 30); // soft white light
 light.position.set(0, 0, 0);
 scene.add(light);
+scene.add(sparkle);
 
 const loader = new GLTFLoader();
 
@@ -80,15 +79,74 @@ loader.load('public/media/works/3d/campfire-mud.glb', function (gltf) {
   model.position.y = -5;
   //model.rotation.x = 25 * Math.PI / 180;
   //model.position.x = 0;
-
+  
   scene.add(gltf.scene);
-
-
+  
+  
 }, undefined, function (error) {
 
   console.error(error);
-
+  
 });
+const smokemap = new THREE.TextureLoader().load( 'public/media/works/3d/smoke.png' )
+//const sMaterial = new THREE.SpriteMaterial({ map: smokemap });
+//const sMaterial = new THREE.MeshBasicMaterial({ map: smokemap, alphaTest: 0.5, transparent:true });
+const sMaterial = new THREE.MeshLambertMaterial({ map: smokemap, alphaTest: 0.3, transparent:true });
+const sGeometry = new THREE.PlaneGeometry(1,1);
+
+//fire particle
+// Create an array to store the particles
+let smokes = [];
+
+// Function to generate a particle at a specific position
+function generateParticle(position) {
+  // Create your particle geometry and material
+  let sClone = new THREE.Mesh(sGeometry,sMaterial);
+  const smoke = SkeletonUtils.clone(sClone);
+  smoke.position.copy(position);
+  smoke.position.x = genRandNum(-1.2, 1.2);
+  smoke.position.y = genRandNum(-3, -1);
+  smoke.position.z = genRandNum(-1.2, 1.2);
+  smoke.rotation.y = Math.PI / Math.random();
+  smoke.rotation.z = Math.PI / Math.random();
+  scene.add(smoke);
+
+  // Define the particle's lifespan (in milliseconds)
+  let lifespan = 900; // 2 seconds
+
+  // Schedule the removal of the particle after lifespan
+  setTimeout(() => {
+      scene.remove(smoke);
+      smokes.splice(smokes.indexOf(smoke), 1);
+  }, lifespan);
+
+  smokes.push(smoke);
+}
+/* function generateParticle(position) {
+    // Create your particle geometry and material
+    let smoke = new THREE.Sprite(sMaterial);
+    smoke.position.copy(position);
+    smoke.position.x = genRandNum(-1.2, 1.2);
+    smoke.position.y = genRandNum(-3, -1);
+    smoke.position.z = genRandNum(-1.2, 1.2);
+    smoke.rotation.y = Math.PI / Math.random();
+    smoke.rotation.z = Math.PI / Math.random();
+    scene.add(smoke);
+
+    // Define the particle's lifespan (in milliseconds)
+    let lifespan = 1000; // 2 seconds
+
+    // Schedule the removal of the particle after lifespan
+    setTimeout(() => {
+        scene.remove(smoke);
+        smokes.splice(smokes.indexOf(smoke), 1);
+    }, lifespan);
+
+    smokes.push(smoke);
+} */
+
+// Generate 3 particles at specific positions
+//generateParticle(new THREE.Vector3(0, 0, 0));
 
 function genRandNum(min, max, excludeMin, excludeMax) {
   let randomNumber;
@@ -147,12 +205,25 @@ function resizeCanvasToDisplaySize() {
   }
 }
 
+//update smoke
+function updateSmoke() {
+  smokes.forEach((smoke) => {
+      //smoke.rotation.copy(camera.rotation);
+      smoke.position.y += 0.5;
+      smoke.rotation.z += 0.01; // Adjust the rotation speed as needed
+  });
+}
+
 function animate() {
   requestAnimationFrame(animate);
   //resizeCanvasToDisplaySize();
   /* cube.rotation.x += 0.01;
   cube.rotation.y += 0.01; */
-
+  generateParticle(new THREE.Vector3(0, 0, 0));
+  sparkle.distance = genRandNum(5,25);
+  sparkle.position.x = genRandNum(-3,3);
+  sparkle.position.z = genRandNum(-3,3);
+  updateSmoke();
   renderer.render(scene, camera);
 }
 
