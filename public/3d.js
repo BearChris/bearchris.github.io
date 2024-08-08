@@ -7,7 +7,7 @@ const cameraDistance = 16;
 const cameraHeight = 12;
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -16,9 +16,10 @@ camera.position.set(0, cameraHeight, cameraDistance);
 camera.lookAt(0, 0, 0);
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = window.innerWidth / (window.innerHeight/1.8) ;
+  renderer.setPixelRatio( canvas.devicePixelRatio );
+  renderer.setSize(window.innerWidth, window.innerHeight/1.8);
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
   //controls.update();
 }
 
@@ -43,7 +44,9 @@ const container = document.getElementById('canvas');
 // create your renderer
 
 //renderer.setPixelRatio(1);
-renderer.setSize(window.innerWidth, window.innerHeight);
+camera.aspect = (window.innerWidth / (window.innerHeight / 1.8));
+renderer.setSize(window.innerWidth, window.innerHeight/1.8);
+camera.updateProjectionMatrix();
 
 // apply the internal canvas of the renderer to the DOM
 
@@ -65,8 +68,8 @@ controls.minDistance = 5;
 controls.maxDistance = 30; */
 
 //const light = new THREE.AmbientLight(0xffffff); // soft white light
-const light = new THREE.PointLight(0xffcc00, 3, 30); // soft white light
-const sparkle = new THREE.PointLight(0xff5000, 3, 30); // soft white light
+const light = new THREE.PointLight(0xffcc00, 3.9, 50); // soft white light
+const sparkle = new THREE.PointLight(0xff5000, 3.9, 30); // soft white light
 light.position.set(0, 0, 0);
 scene.add(light);
 scene.add(sparkle);
@@ -109,10 +112,11 @@ function generateParticle(position) {
   smoke.position.z = genRandNum(-1.2, 1.2);
   smoke.rotation.y = Math.PI / Math.random();
   smoke.rotation.z = Math.PI / Math.random();
+  smoke.scale.x = 5;
   scene.add(smoke);
 
   // Define the particle's lifespan (in milliseconds)
-  let lifespan = 900; // 2 seconds
+  let lifespan = 500; // 2 seconds
 
   // Schedule the removal of the particle after lifespan
   setTimeout(() => {
@@ -190,27 +194,13 @@ treesLoader.load('public/media/works/3d/campfire-tree.glb', function (gltf) {
 
 //camera.position.z = 15;
 
-//resize canvas
-function resizeCanvasToDisplaySize() {
-  const canvas = renderer.domElement;
-  const width = canvas.clientWidth;
-  const height = canvas.clientHeight;
-  if (canvas.width !== width || canvas.height !== height) {
-    // you must pass false here or three.js sadly fights the browser
-    renderer.setSize(width, height, false);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-
-    // set render target sizes here
-  }
-}
-
 //update smoke
 function updateSmoke() {
   smokes.forEach((smoke) => {
       //smoke.rotation.copy(camera.rotation);
-      smoke.position.y += 0.5;
+      smoke.position.y += 0.5; 
       smoke.rotation.z += 0.01; // Adjust the rotation speed as needed
+      smoke.scale.x -= 0.3;
   });
 }
 
@@ -241,7 +231,7 @@ animate();
 //window.onresize = onWindowResize;
 renderer.setPixelRatio(window.devicePixelRatio)
 
-var canvas = document.querySelector('canvas');
+var canvas = document.getElementById('canvas');
 function fitToContainer(canvas) {
   // Make it visually fill the positioned parent
   canvas.style.width = '100%';
@@ -249,10 +239,10 @@ function fitToContainer(canvas) {
   // ...then set the internal size to match
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
-
+  
   renderer.setSize($(container).width(), $(container).height());
-  container.appendChild(renderer.domElement);
 }
+container.appendChild(renderer.domElement);
 fitToContainer(canvas);
 
-//window.addEventListener('resize', onResize());
+window.addEventListener('resize', () => fitToContainer(canvas));
