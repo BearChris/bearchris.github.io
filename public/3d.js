@@ -63,9 +63,10 @@ controls.maxPolarAngle = Math.PI / 2;
 controls.update();
 /* controls.enableDamping = true;// an animation loop is required when either damping or auto-rotation are enabled
 controls.dampingFactor = 0.3;
-//controls.screenSpacePanning = false;
+//controls.screenSpacePanning = false;*/
 controls.minDistance = 5;
-controls.maxDistance = 30; */
+controls.maxDistance = 30;
+controls.enablePan = false;
 
 //const light = new THREE.AmbientLight(0xffffff); // soft white light
 const light = new THREE.PointLight(0xffcc00, 3.9, 50); // soft white light
@@ -239,7 +240,8 @@ function fitToContainer(canvas) {
   // ...then set the internal size to match
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
-  
+  camera.aspect = (window.innerWidth / (window.innerHeight / 1.8));
+  camera.updateProjectionMatrix();
   renderer.setSize($(container).width(), $(container).height());
 }
 container.appendChild(renderer.domElement);
