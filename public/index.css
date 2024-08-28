@@ -177,6 +177,22 @@ body{
   background-color: #000;
 }
 
+#ar-btn{
+  /* display: none; */
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-bg);
+  padding: 1em 2em;
+  border-radius: 999em;
+  font-weight: 700;
+  margin-top: 3em;
+  width: fit-content;
+}
+
+#ar-btn:hover{
+  opacity: 50%;
+}
+
 .second-content{
   width: 90vw;
   padding: 3rem 0;

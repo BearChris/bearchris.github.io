@@ -5,10 +5,11 @@ import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 
 const cameraDistance = 16;
 const cameraHeight = 12;
+const scenes = [];
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true});
 const controls = new OrbitControls(camera, renderer.domElement);
 
 //camera.position.set( window.innerWidth / 4, window.innerHeight / 4, 0 );
@@ -16,12 +17,18 @@ camera.position.set(0, cameraHeight, cameraDistance);
 camera.lookAt(0, 0, 0);
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / (window.innerHeight/1.8) ;
-  renderer.setPixelRatio( canvas.devicePixelRatio );
-  renderer.setSize(window.innerWidth, window.innerHeight/1.8);
+  camera.aspect = window.innerWidth / (window.innerHeight / 1.8);
+  renderer.setPixelRatio(canvas.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight / 1.8);
   camera.updateProjectionMatrix();
   //controls.update();
 }
+
+document.addEventListener('click', ({ target }) => {
+  if (target.matches('#ar-btn')) {
+    ar();
+  }
+});
 
 //window.addEventListener('resize', onWindowResize);
 
@@ -40,17 +47,21 @@ const textureCube = skyboxLoader.load([
 scene.background = textureCube;
 
 const container = document.getElementById('canvas');
-
+//if support ar
+navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
+  if (!supported) { return; }
+  // 'immersive-ar' sessions are supported.
+  // Page should advertise AR support to the user.
+  document.getElementById('ar-btn').style.display = "block"
+});
 // create your renderer
 
 //renderer.setPixelRatio(1);
 camera.aspect = (window.innerWidth / (window.innerHeight / 1.8));
-renderer.setSize(window.innerWidth, window.innerHeight/1.8);
+renderer.setSize(window.innerWidth, window.innerHeight / 1.8);
 camera.updateProjectionMatrix();
 
 // apply the internal canvas of the renderer to the DOM
-
-container.appendChild(renderer.domElement);
 
 //const renderer = new THREE.WebGLRenderer();
 //renderer.setSize( window.innerWidth, window.innerHeight );
@@ -83,20 +94,20 @@ loader.load('public/media/works/3d/campfire-mud.glb', function (gltf) {
   model.position.y = -5;
   //model.rotation.x = 25 * Math.PI / 180;
   //model.position.x = 0;
-  
+
   scene.add(gltf.scene);
-  
-  
+
+
 }, undefined, function (error) {
 
   console.error(error);
-  
+
 });
-const smokemap = new THREE.TextureLoader().load( 'public/media/works/3d/smoke.png' )
+const smokemap = new THREE.TextureLoader().load('public/media/works/3d/smoke.png')
 //const sMaterial = new THREE.SpriteMaterial({ map: smokemap });
 //const sMaterial = new THREE.MeshBasicMaterial({ map: smokemap, alphaTest: 0.5, transparent:true });
-const sMaterial = new THREE.MeshLambertMaterial({ map: smokemap, alphaTest: 0.3, transparent:true });
-const sGeometry = new THREE.PlaneGeometry(1,1);
+const sMaterial = new THREE.MeshLambertMaterial({ map: smokemap, alphaTest: 0.3, transparent: true });
+const sGeometry = new THREE.PlaneGeometry(1, 1);
 
 //fire particle
 // Create an array to store the particles
@@ -105,7 +116,7 @@ let smokes = [];
 // Function to generate a particle at a specific position
 function generateParticle(position) {
   // Create your particle geometry and material
-  let sClone = new THREE.Mesh(sGeometry,sMaterial);
+  let sClone = new THREE.Mesh(sGeometry, sMaterial);
   const smoke = SkeletonUtils.clone(sClone);
   smoke.position.copy(position);
   smoke.position.x = genRandNum(-1.2, 1.2);
@@ -121,8 +132,8 @@ function generateParticle(position) {
 
   // Schedule the removal of the particle after lifespan
   setTimeout(() => {
-      scene.remove(smoke);
-      smokes.splice(smokes.indexOf(smoke), 1);
+    scene.remove(smoke);
+    smokes.splice(smokes.indexOf(smoke), 1);
   }, lifespan);
 
   smokes.push(smoke);
@@ -159,9 +170,9 @@ function genRandNum(min, max, excludeMin, excludeMax) {
     do {
       randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     } while (randomNumber >= excludeMin && randomNumber <= excludeMax);
-    
+
     return randomNumber;
-  }else{
+  } else {
     return randomNumber = Math.random() * (max - min + 1) + min;
   }
 }
@@ -198,12 +209,14 @@ treesLoader.load('public/media/works/3d/campfire-tree.glb', function (gltf) {
 //update smoke
 function updateSmoke() {
   smokes.forEach((smoke) => {
-      //smoke.rotation.copy(camera.rotation);
-      smoke.position.y += 0.5; 
-      smoke.rotation.z += 0.01; // Adjust the rotation speed as needed
-      smoke.scale.x -= 0.3;
+    //smoke.rotation.copy(camera.rotation);
+    smoke.position.y += 0.5;
+    smoke.rotation.z += 0.01; // Adjust the rotation speed as needed
+    smoke.scale.x -= 0.3;
   });
 }
+
+scenes.push( scene );
 
 function animate() {
   requestAnimationFrame(animate);
@@ -211,11 +224,12 @@ function animate() {
   /* cube.rotation.x += 0.01;
   cube.rotation.y += 0.01; */
   generateParticle(new THREE.Vector3(0, 0, 0));
-  sparkle.distance = genRandNum(5,25);
-  sparkle.position.x = genRandNum(-3,3);
-  sparkle.position.z = genRandNum(-3,3);
+  sparkle.distance = genRandNum(5, 25);
+  sparkle.position.x = genRandNum(-3, 3);
+  sparkle.position.z = genRandNum(-3, 3);
   updateSmoke();
   renderer.render(scene, camera);
+
 }
 
 animate();
@@ -243,6 +257,8 @@ function fitToContainer(canvas) {
   camera.aspect = (window.innerWidth / (window.innerHeight / 1.8));
   camera.updateProjectionMatrix();
   renderer.setSize($(container).width(), $(container).height());
+
+  //renderer.setSize(window.innerWidth, window.innerHeight);
 }
 container.appendChild(renderer.domElement);
 fitToContainer(canvas);
