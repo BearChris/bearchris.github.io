@@ -47,13 +47,7 @@ const textureCube = skyboxLoader.load([
 scene.background = textureCube;
 
 const container = document.getElementById('canvas');
-//if support ar
-navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
-  if (!supported) { return; }
-  // 'immersive-ar' sessions are supported.
-  // Page should advertise AR support to the user.
-  document.getElementById('ar-btn').style.display = "block"
-});
+
 // create your renderer
 
 //renderer.setPixelRatio(1);

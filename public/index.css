@@ -96,6 +96,11 @@ body{
   font-size: 1.5rem;
   margin: 0 .5rem;
   transition: border .5s, transform .5s ease-out;
+  transition: scale .5s;
+}
+
+.navbar-item:hover{
+  scale: 1.2;
 }
 
 .navbar-item:is(.desktop)::before{
@@ -127,6 +132,7 @@ body{
 
 .darkmode-btn{
   -webkit-transition: -webkit-filter .5s ease-in;
+  transition: all .5s !important;
 }
 
 .darkmode-btn img{
