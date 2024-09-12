@@ -11,6 +11,8 @@ let reticle;
 let hitTestSource = null;
 let hitTestSourceRequested = false;
 
+let models = [];
+
 //init();
 
 function init() {
@@ -55,7 +57,7 @@ function init() {
                     mesh.scale.y = Math.random() * 2 + 1;
                     arScene.add(mesh); */
                     loader.load('public/media/works/3d/shin-head.glb', (gltf) => {
-                        const model = gltf.scene;
+                        let model = gltf.scene;
         
                         // Decompose the reticle matrix to position and orient the model
                         reticle.matrix.decompose(model.position, model.quaternion, model.scale);
@@ -64,10 +66,10 @@ function init() {
                         model.scale.set(0.1, 0.1, 0.1); // Scale to fit your arScene
                         // Add the model to the arScene
                         arScene.add(model);
+                        models.push(model);
                     }, undefined, (error) => {
                         console.error('Error loading model:', error);
                     });
-
                 }
 
             }
@@ -98,7 +100,13 @@ function onWindowResize() {
     arRenderer.setSize(window.innerWidth, window.innerHeight);
     /* arRenderer.setSize($(arContainer).width(), $(arContainer).height()); */
 }
-//
+//rotate models
+function spinModels() {
+    models.forEach((model) => {
+      //model.rotation.copy(camera.rotation);
+      model.rotation.y += 0.01;
+    });
+  }
 
 function animate(timestamp, frame) {
 
@@ -148,7 +156,7 @@ function animate(timestamp, frame) {
             }
 
         }
-
+        spinModels();
     }
 
     arRenderer.render(arScene, arCamera);
