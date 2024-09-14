@@ -192,7 +192,7 @@ body{
   padding: 1em 2em;
   border-radius: 999em;
   font-weight: 700;
-  margin-top: 3em;
+  margin: 3em auto;
   width: fit-content;
 }
 
