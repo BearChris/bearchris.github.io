@@ -73,9 +73,11 @@ function init() {
                 models.push(model);
 
                 const mixer = new THREE.AnimationMixer(model);
-                gltf.animations.forEach((clip) => {
+                /* gltf.animations.forEach((clip) => {
                     mixer.clipAction(clip).play(); // Play the animation  
-                });
+                }); */
+                mixer.clipAction(gltf.animations[0]).play();
+
                 mixers.push(mixer);
             }, undefined, (error) => {
                 console.error('Error loading model:', error);
@@ -117,6 +119,8 @@ function spinModels() {
         model.rotation.y += 0.01;
     });
 }
+
+let lastTimestamp = 0;
 
 function animate(timestamp, frame) {
 
@@ -170,10 +174,16 @@ function animate(timestamp, frame) {
 
     }
     if (mixers.length > 0) {
-        const deltaTime = timestamp * 0.001; // Convert time to seconds
-        mixers.forEach((mixer) => {
-            mixer.update(deltaTime * 0.05);
-        });
+        if (lastTimestamp !== 0) {
+            const deltaTime = (timestamp - lastTimestamp) * 0.0016; // Time in seconds  
+            if (mixers.length > 0) {
+                mixers.forEach((mixer) => {
+                    mixer.update(deltaTime); // Use deltaTime directly  
+                });
+            }
+        }
+        
+        lastTimestamp = timestamp; // Update lastTimestamp  
     }
     arRenderer.render(arScene, arCamera);
 
